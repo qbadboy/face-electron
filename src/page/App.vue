@@ -1,11 +1,23 @@
 <template>
-  <Camera />
+  <div class="faces">
+    <Face />
+  </div>
 </template>
 
 <script>
-import Camera from '@components/Camera';
+import Face from '@components/Face';
 
 export default {
-  components: { Camera }
+  components: { Face }
 };
 </script>
+
+<style lang="scss" scoped>
+.faces {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+</style>
