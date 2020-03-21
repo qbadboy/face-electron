@@ -2,6 +2,10 @@ const path = require('path');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
+function resolve(src) {
+  return path.resolve(__dirname, src);
+}
+
 module.exports = {
   mode: 'development',
   entry: {
@@ -15,7 +19,8 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.vue', '.json'],
     alias: {
-      vue$: 'vue/dist/vue.esm.js'
+      vue$: 'vue/dist/vue.esm.js',
+      '@components': resolve('./src/page/components')
     }
   },
   module: {

@@ -4,7 +4,8 @@
   "description": "learning electron",
   "main": "./src/app.js",
   "scripts": {
-    "start": "webpack --watch & electron ."
+    "build": "webpack",
+    "start": "electron ."
   },
   "keywords": [
     "electron",
