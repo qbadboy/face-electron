@@ -2,8 +2,8 @@ const { app, BrowserWindow } = require('electron');
 const path = require('path');
 
 const PAGE_URL =
-  process.env === 'development'
-    ? `file://${resolve('../dist/index.html')}`
+  process.env.NODE_ENV === 'development'
+    ? `http://localhost:9000`
     : `file://${resolve('../dist/index.html')}`;
 
 function resolve(src) {

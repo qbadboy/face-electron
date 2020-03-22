@@ -1,6 +1,7 @@
-const path = require('path');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const path = require('path');
 
 function resolve(src) {
   return path.resolve(__dirname, src);
@@ -13,7 +14,8 @@ module.exports = {
   },
   output: {
     filename: '[name].js',
-    path: path.join(__dirname, '../dist')
+    path: resolve('../dist'),
+    publicPath: '/'
   },
   resolve: {
     extensions: ['.js', '.vue', '.json'],
@@ -33,7 +35,8 @@ module.exports = {
       },
       {
         test: /\.ts$/,
-        loader: 'ts-loader'
+        loader: 'ts-loader',
+        options: { appendTsSuffixTo: [/\.vue$/] }
       },
       {
         test: /\.scss$/,
@@ -68,7 +71,13 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: 'learning electron',
       template: './src/index.html'
-    })
+    }),
+    new CopyWebpackPlugin([
+      {
+        from: resolve('../src/public'),
+        to: resolve('../dist')
+      }
+    ])
   ],
   node: {
     fs: 'empty'

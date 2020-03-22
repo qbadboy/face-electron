@@ -28,11 +28,14 @@ export default {
 
   methods: {
     loadModels() {
+      const { $env, $host } = this;
+      const URL =
+        $env === 'production' ? '../src/public/models' : `${$host}/models`;
       return Promise.all([
-        faceapi.nets.tinyFaceDetector.loadFromUri('../src/models'),
-        faceapi.nets.faceLandmark68Net.loadFromUri('../src/models'),
-        faceapi.nets.faceRecognitionNet.loadFromUri('../src/models'),
-        faceapi.nets.faceExpressionNet.loadFromUri('../src/models')
+        faceapi.nets.tinyFaceDetector.loadFromUri(URL),
+        faceapi.nets.faceLandmark68Net.loadFromUri(URL),
+        faceapi.nets.faceRecognitionNet.loadFromUri(URL),
+        faceapi.nets.faceExpressionNet.loadFromUri(URL)
       ]);
     },
     initFace() {

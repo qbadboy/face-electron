@@ -1,14 +1,16 @@
 <template>
   <div class="faces">
-    <Face />
+    <!-- <Face /> -->
+    <FaceTs />
   </div>
 </template>
 
 <script>
 import Face from '@components/Face';
+import FaceTs from '@components/FaceTs';
 
 export default {
-  components: { Face }
+  components: { Face, FaceTs }
 };
 </script>
 
